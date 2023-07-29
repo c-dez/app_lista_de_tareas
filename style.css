@@ -1,0 +1,19 @@
+body{
+    background-color: #61677A;
+    height: 100%;
+}
+#container{
+background-color: aqua;
+height: 100%;
+width: 100%;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 100px 1fr;
+
+}
+.header{
+    grid-area: 1/1/2/3;
+}
+.task-list{
+
+}
