@@ -1,6 +1,7 @@
-let taskArray = ['test', 'cat']
-const ol = document.querySelector('.task-list>ol')
+let taskArray = []
+const taskList = document.querySelector('.taskList>.container')
 const submitBtn = document.querySelector('.submitBtn')
+const inputText = document.querySelector('.inputText')
 
 
 const createAddBtn = ()=>{
@@ -39,43 +40,34 @@ const createRemoveBtn = ()=>{
     return removeBtn;
 }
 
-
-
-const addToTaskArray = ()=>{//push to array and cleans value
-    const inputText = document.querySelector('.inputText')
-    if(inputText.value){
-        taskArray.push(inputText.value)
-        inputText.value = ''
-    }
+function NewObj(value){
+    this.value = value;
+    // this.addBtn = createAddBtn()
 }
+NewObj.prototype.getValue = function(){ return this.value}
+
+const addBtnFunc = ()=>{
+    const obj=new NewObj(inputText.value)
+    taskArray.push(obj)
+    const value = document.createElement('div')
+    value.textContent = obj.value
+    taskList.appendChild(value)
+
+    const addBtn = createAddBtn()
+    taskList.appendChild(addBtn)
+    addBtn.addEventListener('click',()=>{
+        console.log(obj.getValue())
+    })
+}
+
+submitBtn.addEventListener('click', ()=>{
+    if(inputText.value){
+    addBtnFunc()
+    }
+})
+
+
 
     
 
-(()=>{//creates list form array
-    taskArray.forEach(item=>{
-        const task = document.createElement('div')
-        task.textContent = item
-        ol.appendChild(task)
-        task.appendChild(createAddBtn())
-        task.appendChild(createRemoveBtn())
-    })
-})()
 
-const addTaskToTaskList = ()=>{
-    const task = document.createElement('li')
-    task.textContent = taskArray[taskArray.length -1]
-    ol.appendChild(task)
-    task.appendChild(createAddBtn())
-    task.appendChild(createRemoveBtn())
-
-}
-
-submitBtn.addEventListener('click',()=>{
-    const inputText = document.querySelector('.inputText')
-    if(inputText.value){
-        addToTaskArray()
-        addTaskToTaskList()
-
-    }
-
-})
