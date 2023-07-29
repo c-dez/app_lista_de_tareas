@@ -1,3 +1,6 @@
+let taskArray = ['test', 'cat']
+const ol = document.querySelector('.task-list>ol')
+
 const createAddBtn = ()=>{
     const addBtn = document.createElement('button');
     addBtn.classList.add('addbtn');
@@ -33,19 +36,26 @@ const createRemoveBtn = ()=>{
 
     return removeBtn;
 }
-const ol = document.querySelector('.task-list>ol')
-// ol.appendChild(createAddBtn())
-// ol.appendChild(createRemoveBtn())
 
-let taskArray = ['test',]
+
 
 const submitBtn = document.querySelector('.submitBtn')
-const addToTaskList = ()=>{
+const addToTaskList = ()=>{//push to array and cleans value
     const inputText = document.querySelector('.inputText')
     if(inputText.value){
         taskArray.push(inputText.value)
-        const li = document.createElement('li')
-        console.log(taskArray)
-
+        inputText.value = ''
     }
 }
+
+    
+
+(()=>{//creates list form array
+    taskArray.forEach(item=>{
+        const task = document.createElement('div')
+        task.textContent = item
+        ol.appendChild(task)
+        task.appendChild(createAddBtn())
+        task.appendChild(createRemoveBtn())
+    })
+})()
