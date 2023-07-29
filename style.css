@@ -1,9 +1,10 @@
 body{
-    background-color: #61677A;
+    /* background-color: #61677A; */
     height: 100%;
+    margin: 0;
 }
 #container{
-background-color: aqua;
+/* background-color: aqua; */
 height: 100%;
 width: 100%;
 display: grid;
@@ -13,7 +14,15 @@ grid-template-rows: 100px 1fr;
 }
 .header{
     grid-area: 1/1/2/3;
+    background-color: #61677A;
+    /* border-radius: 10px; */
 }
 .task-list{
-
+    height: 100vh;
+    background-color: #D8D9DA;
+}
+.todo-list{
+    background-color: #D8D9DA;
+    border-radius: 10px;
+    margin: 10px;
 }
