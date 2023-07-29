@@ -33,6 +33,19 @@ const createRemoveBtn = ()=>{
 
     return removeBtn;
 }
-const ol = document.querySelector('ol')
-ol.appendChild(createAddBtn())
-ol.appendChild(createRemoveBtn())
+const ol = document.querySelector('.task-list>ol')
+// ol.appendChild(createAddBtn())
+// ol.appendChild(createRemoveBtn())
+
+let taskArray = ['test',]
+
+const submitBtn = document.querySelector('.submitBtn')
+const addToTaskList = ()=>{
+    const inputText = document.querySelector('.inputText')
+    if(inputText.value){
+        taskArray.push(inputText.value)
+        const li = document.createElement('li')
+        console.log(taskArray)
+
+    }
+}
